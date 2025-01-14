@@ -21,4 +21,10 @@ pub const Alligator = struct {
 
         return ptr;
     }
+
+    pub fn free(self: *Alligator, buffer: anytype) void {
+        const totalToFree = buffer.len;
+        self.base.free(buffer);
+        self.totalFreed += totalToFree;
+    }
 };
