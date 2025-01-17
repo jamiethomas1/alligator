@@ -70,20 +70,6 @@ test "double free prevention" {
     try expect(alligator.total_freed == 128);
 }
 
-// test "null free handling" {
-//     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-//     defer {
-//         const deinit_status = gpa.deinit();
-//         if (deinit_status == .leak) expect(false) catch @panic("TEST FAILED: GeneralPurposeAllocator leaked memory");
-//     }
-//
-//     var alligator = Alligator.init(&gpa.allocator());
-//
-//     alligator.free(null, u8, 128); // Freeing null
-//
-//     try expect(alligator.total_freed == 0);
-// }
-//
 // test "freeing wrong size" {
 //     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
 //     defer {
